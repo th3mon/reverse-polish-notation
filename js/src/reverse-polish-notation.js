@@ -9,12 +9,18 @@ export const reversePolishNotation = (expression) => {
   const stack = []
   const separator = ' '
 
-  // INFO: I think it should be doable with reduce()
-  return expression.split(separator).map(element => {
-    if (element in operations) {
-      return operations[element](stack.pop(), stack.pop())
-    }
+  expression.split(separator)
+    .map(element => {
+      if (operations[element]) {
+        const result = operations[element](stack.pop(), stack.pop())
 
-    stack.push(element)
-  }).filter(Boolean)[0]
+        stack.push(result)
+      } else {
+        stack.push(element)
+      }
+    })
+
+  return stack.length > 1
+    ? reversePolishNotation(stack.join(separator))
+    : stack[0]
 }
