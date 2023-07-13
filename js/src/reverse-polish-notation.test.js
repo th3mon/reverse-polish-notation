@@ -5,7 +5,33 @@ describe('Reverse Polish Notation', () => {
     expect(reversePolishNotation).toBeDefined()
   })
 
-  it('Should reverse polish notation', () => {
-    expect(reversePolishNotation('1 2 +')).toEqual(3)
+  describe('simple use cases', () => {
+    it('Should add numbers', () => {
+      expect(reversePolishNotation('1 2 +')).toEqual(3)
+    })
+
+    it('Should substract numbers', () => {
+      expect(reversePolishNotation('2 1 -')).toEqual(-1)
+    })
+
+    it('Should multiply numbers', () => {
+      expect(reversePolishNotation('2 3 *')).toEqual(6)
+    })
+
+    it('Should divide numbers', () => {
+      expect(reversePolishNotation('2 3 /')).toEqual(1.5)
+    })
+
+    it('Should reverse polish notation', () => {
+      expect(reversePolishNotation('2 3 ^')).toEqual(9)
+    })
+  })
+
+  it.skip('Should execute modulo', () => {
+    expect(reversePolishNotation('2 3 %')).toEqual(0)
+  })
+
+  it.skip('Should add and substract numbers', () => {
+    expect(reversePolishNotation('7 1 1 + −')).toEqual(5)
   })
 })
