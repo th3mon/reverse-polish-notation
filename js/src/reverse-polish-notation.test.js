@@ -22,7 +22,7 @@ describe("Reverse Polish Notation", () => {
       expect(reversePolishNotation("2 3 /")).toEqual(1.5);
     });
 
-    it("Should reverse polish notation", () => {
+    it("Should power numbers", () => {
       expect(reversePolishNotation("2 3 ^")).toEqual(9);
     });
   });
